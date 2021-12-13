@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 
 
@@ -16,7 +17,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     RouterModule.forRoot([])
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
