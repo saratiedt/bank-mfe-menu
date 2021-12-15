@@ -2,10 +2,10 @@
 import { enableProdMode, NgZone } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router } from '@angular/router';
-import { ɵAnimationEngine as AnimationEngine } from '@angular/animations/browser'; 
+import { ɵAnimationEngine as AnimationEngine } from '@angular/animations/browser';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import singleSpaAngular, { getSingleSpaExtraProviders } from 'single-spa-angular';
+import singleSpaAngular from 'single-spa-angular';
 import { singleSpaPropsSubject } from './single-spa/single-spa-props';
 
 if (environment.production) {
@@ -15,7 +15,7 @@ if (environment.production) {
 const lifecycles = singleSpaAngular({
   bootstrapFunction: singleSpaProps => {
     singleSpaPropsSubject.next(singleSpaProps);
-    return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppModule);
+    return platformBrowserDynamic().bootstrapModule(AppModule);
   },
   template: '<mfe-menu-root />',
   Router,

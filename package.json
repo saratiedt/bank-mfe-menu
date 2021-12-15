@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:single-spa": "ng build --prod --deploy-url http://localhost:4203/",
+    "build:single-spa": "ng build --prod --deploy-url http://localhost:4203/ --output-hashing none",
     "serve:single-spa": "ng serve --disable-host-check --port 4203 --deploy-url http://localhost:4203/ --live-reload false"
   },
   "private": true,
@@ -22,8 +22,9 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "mfe-lib-components": "file:../lib-components/dist/mfe-lib-components",
     "rxjs": "~6.4.0",
-    "single-spa-angular": "^3.6.0",
+    "single-spa-angular": "^3.1.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
