@@ -1,21 +1,26 @@
 
-import { enableProdMode, NgZone } from '@angular/core';
+import { enableProdMode, NgZone, ValueProvider } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router } from '@angular/router';
 import { ɵAnimationEngine as AnimationEngine } from '@angular/animations/browser';
+import { MENU_BEHAVIOR } from "mfe-lib-components";
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import singleSpaAngular from 'single-spa-angular';
-import { singleSpaPropsSubject } from './single-spa/single-spa-props';
+import { SingleSpaProps, singleSpaPropsSubject } from './single-spa/single-spa-props';
 
 if (environment.production) {
   enableProdMode();
 }
 
 const lifecycles = singleSpaAngular({
-  bootstrapFunction: singleSpaProps => {
+  bootstrapFunction: (singleSpaProps: SingleSpaProps) => {
     singleSpaPropsSubject.next(singleSpaProps);
-    return platformBrowserDynamic().bootstrapModule(AppModule);
+    const menuBehaviorProvider: ValueProvider = {
+      provide: MENU_BEHAVIOR,
+      useValue: singleSpaProps.menuBehavior
+    };
+    return platformBrowserDynamic([menuBehaviorProvider]).bootstrapModule(AppModule);
   },
   template: '<mfe-menu-root />',
   Router,

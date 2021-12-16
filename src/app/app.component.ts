@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { startWith } from "rxjs/operators";
-import { MenuService } from "mfe-lib-components";
+import { tap } from "rxjs/operators";
+import { MfeLibComponentsService } from "mfe-lib-components";
 
 @Component({
   selector: "mfe-menu-root",
@@ -10,6 +10,6 @@ import { MenuService } from "mfe-lib-components";
 })
 export class AppComponent {
   title = "mfe-menu";
-  constructor(private readonly menuService: MenuService) { }
-  menu$ = this.menuService.menu$.pipe(startWith(false));
+  constructor(private readonly menuService: MfeLibComponentsService) { }
+  menu$ = this.menuService.menu.pipe(tap(menu => console.log({ menu })));
 }
