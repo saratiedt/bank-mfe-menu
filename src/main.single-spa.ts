@@ -18,7 +18,7 @@ const lifecycles = singleSpaAngular({
     singleSpaPropsSubject.next(singleSpaProps);
     const menuBehaviorProvider: ValueProvider = {
       provide: MENU_BEHAVIOR,
-      useValue: singleSpaProps.menuBehavior
+      useValue: singleSpaProps.menu$
     };
     return platformBrowserDynamic([menuBehaviorProvider]).bootstrapModule(AppModule);
   },
