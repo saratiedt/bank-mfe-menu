@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MenuService } from "mfe-lib-components";
+import { MenuService } from "./menu/menu.service";
 
 @Component({
   selector: "mfe-menu-root",

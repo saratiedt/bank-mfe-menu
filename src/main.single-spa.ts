@@ -26,3 +26,7 @@ const lifecycles = singleSpaAngular({
 export const bootstrap = lifecycles.bootstrap;
 export const mount = lifecycles.mount;
 export const unmount = lifecycles.unmount;
+
+export * from './app/menu/menu.provider';
+export * from './app/menu/menu.service';
+export * from './app/menu/menu.token';
