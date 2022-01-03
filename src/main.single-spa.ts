@@ -9,7 +9,9 @@ import singleSpaAngular from 'single-spa-angular';
 import { SingleSpaProps, singleSpaPropsSubject } from './single-spa/single-spa-props';
 
 if (environment.production) {
-  enableProdMode();
+  try {
+    enableProdMode();
+  } catch (error) { }
 }
 
 const lifecycles = singleSpaAngular({
