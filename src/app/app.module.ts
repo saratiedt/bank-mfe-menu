@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { PdpjLinkDirective } from './pdpj-link.directive';
+import { LocationProvider } from './location.provider';
 
 
 
@@ -13,13 +15,14 @@ import { APP_BASE_HREF } from '@angular/common';
   declarations: [
     AppComponent,
     MenuComponent,
-    EmptyRouteComponent
+    EmptyRouteComponent,
+    PdpjLinkDirective
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{path: '**', component: EmptyRouteComponent}])
+    RouterModule.forRoot([{ path: '**', component: EmptyRouteComponent }])
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
-  bootstrap: [AppComponent]
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }, LocationProvider],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
