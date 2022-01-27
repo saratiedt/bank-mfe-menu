@@ -15,8 +15,8 @@ if (environment.production) {
   } catch (error) { }
 }
 
-const cssLifecycles = singleSpaCss({
-  cssUrls: ['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'],
+const cssLifecycles = singleSpaCss({ 
+  cssUrls: [],
 });
 
 const lifecycles = singleSpaAngular({
