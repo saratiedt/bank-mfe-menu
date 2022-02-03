@@ -20,14 +20,14 @@ if (environment.production) {
 }
 
 const cssLifecycles = singleSpaCss({
-  cssUrls: [],
+  cssUrls: ['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'],
 });
 
 const lifecycles = singleSpaAngular({
   bootstrapFunction: (props: SingleSpaProps) => {
     singleSpaPropsSubject.next(props);
     return platformBrowserDynamic([
-      { provide: APP_BASE_HREF, useValue: props.appBaseHref },
+      { provide: APP_BASE_HREF, useValue: props.baseHref },
     ]).bootstrapModule(AppModule);
   },
   template: "<mfe-menu-root />",
