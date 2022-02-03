@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
 import { PdpjLinkDirective } from './pdpj-link.directive';
 import { LocationProvider } from './location.provider';
 
@@ -22,7 +21,7 @@ import { LocationProvider } from './location.provider';
     BrowserModule,
     RouterModule.forRoot([{ path: '**', component: EmptyRouteComponent }])
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }, LocationProvider],
+  providers: [LocationProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

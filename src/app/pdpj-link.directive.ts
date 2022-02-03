@@ -21,7 +21,7 @@ export class PdpjLinkDirective {
 
   @HostListener("click") onClick() {
     const prefix = this.link.split("/")[0] || this.link.split("/")[1];
-    return ["app1", "app2", "financial-core", "skeleton"].includes(prefix)
+    return ["app1", "app2", "financial-core", "skeleton", "registration"].includes(prefix)
       ? this.router.navigateByUrl(this.link)
       : this.location.assign(this.link);
   }
