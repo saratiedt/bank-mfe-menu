@@ -7,11 +7,9 @@ import singleSpaAngular from "single-spa-angular";
 import singleSpaCss from "single-spa-css";
 import { AppModule } from "./app/app.module";
 import { environment } from "./environments/environment";
-import {
-  SingleSpaProps,
-  singleSpaPropsSubject,
-} from "./single-spa/single-spa-props";
+import { SingleSpaProps } from "./single-spa/single-spa-props";
 import { APP_BASE_HREF } from "@angular/common";
+import { SingleSpaPropsService } from "./single-spa/single-spa-props.service";
 
 if (environment.production) {
   try {
@@ -20,16 +18,23 @@ if (environment.production) {
 }
 
 const cssLifecycles = singleSpaCss({
-  cssUrls: ['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'],
+  cssUrls: [
+    "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+  ],
 });
 
 const lifecycles = singleSpaAngular({
-  bootstrapFunction: (props: SingleSpaProps) => {
-    singleSpaPropsSubject.next(props);
-    return platformBrowserDynamic([
-      { provide: APP_BASE_HREF, useValue: props.baseHref },
-    ]).bootstrapModule(AppModule);
-  },
+  bootstrapFunction: (props: SingleSpaProps) =>
+    platformBrowserDynamic([
+      {
+        provide: APP_BASE_HREF,
+        useValue: props.baseHref,
+      },
+      {
+        provide: SingleSpaPropsService,
+        useValue: new SingleSpaPropsService(props),
+      },
+    ]).bootstrapModule(AppModule),
   template: "<mfe-menu-root />",
   Router,
   NgZone: NgZone,
