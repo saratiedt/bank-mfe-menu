@@ -31,6 +31,16 @@ const lifecycles = singleSpaAngular({
         useValue: props.baseHref,
       },
       {
+        //substituir pelo Injection token da pdpj-lib-componentes
+        provide: 'PDPJ_ROUTES',
+        useValue: props.routes,
+      },
+      {
+        //substituir pelo Injection token da pdpj-lib-componentes
+        provide: 'PDPJ_ROUTER_ROUTES',
+        useValue: props.routerRoutes,
+      },
+      {
         provide: SingleSpaPropsService,
         useValue: new SingleSpaPropsService(props),
       },

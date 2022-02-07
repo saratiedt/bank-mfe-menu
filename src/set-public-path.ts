@@ -1,2 +1,3 @@
+import { deployUrls } from "@pdpj/fed-main";
 //@ts-ignore
-__webpack_public_path__ = window.__fed_menu_deploy_url__;
+__webpack_public_path__ = deployUrls.menu;

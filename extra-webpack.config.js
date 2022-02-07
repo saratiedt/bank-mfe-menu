@@ -21,7 +21,8 @@ module.exports = (angularWebpackConfig, options) => {
     "@angular/platform-browser/animations": "@angular/platform-browser/animations",
     "@angular/router": "@angular/router",
     "single-spa": "single-spa",
-    "mfe-lib-components": "mfe-lib-components"
+    "mfe-lib-components": "mfe-lib-components",
+    "@pdpj/fed-main": "@pdpj/fed-main",
   };
 
   // Feel free to modify this webpack config however you'd like to
